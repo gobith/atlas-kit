@@ -1,0 +1,30 @@
+{
+    "name": "${containerWorkspaceFolderBasename}-dev",
+    "containerEnv": {
+        "PORT_PREFIX": "67",
+        "COMPOSE_PROJECT_NAME": "${containerWorkspaceFolderBasename}"
+    },
+    "initializeCommand": "docker network create ${containerWorkspaceFolderBasename}_default || exit 0",
+    "runArgs": [
+        "--init",
+        "--name",
+        "${containerWorkspaceFolderBasename}-dev",
+        "--network",
+        "${containerWorkspaceFolderBasename}_default"
+    ],
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
+    "postCreateCommand": "sudo chmod ugo+rw /var/run/docker.sock",
+    "extensions": [
+        "esbenp.prettier-vscode",
+        "svelte.svelte-vscode",
+        "cweijan.vscode-postgresql-client2",
+        "davidanson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+    ],
+    "image": "linkuistics/devanyware-headless:4.1.2",
+    "remoteUser": "dev"
+}
