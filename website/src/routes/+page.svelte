@@ -1,7 +1,7 @@
 <script lang="ts">
-    import session from "../lib/stores/session-store";
-    import Map from "../lib/map/Map.svelte";
-    import Navigation from "../lib/navigation/Navigation.svelte";
+    import session from "$lib/stores/session-store";
+    import Map from "$lib/map/Map.svelte";
+    import Navigation from "$lib/navigation/Navigation.svelte";
  
   </script>
   
