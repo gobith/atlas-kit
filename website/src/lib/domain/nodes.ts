@@ -6,7 +6,7 @@ const borders = new Map();
 
 export const storeBorders = (borderData: BorderData[]) => {
   borderData.forEach((border) => {
-    borders.set(border.id, new Border(border));
+    borders.set(border.id as string, new Border(border));
   });
 };
 
@@ -35,6 +35,10 @@ const createNodes = (borderData: BorderData[])  => {
 };
 
 export const borderPathForAreas = (areas: AreaData[]) : Path2D => {
+
+  console.log("borders" , borders);
+  console.log("areas" , areas);
+
   return new Path2D(borderDForAreas(areas));
 };
 

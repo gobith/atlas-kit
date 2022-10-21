@@ -41,6 +41,7 @@ const createSession = (worldData: WorldData, mapData: MapData) => {
 		woodsPath: Path2D;
 		mountainsPath: Path2D;
 		tree: AreaQuadTree | null;
+    areas: any[];
 	};
 
 	const data: Data = {
@@ -55,7 +56,8 @@ const createSession = (worldData: WorldData, mapData: MapData) => {
 		provinceBordersPath: provinceBordersPathForAreas(mapData.areas),
 		woodsPath: new Path2D(),
 		mountainsPath: new Path2D(),
-		tree: null
+		tree: null,
+    areas: mapData.areas
 	};
 
 	worldData.regents.forEach((objectData) => {

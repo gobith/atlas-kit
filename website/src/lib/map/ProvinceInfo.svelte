@@ -1,19 +1,16 @@
 <script lang="ts">
-  export let province;
+  import type { Province } from '$lib/domain/domain';
+  export let province: Province;
   console.log(province.domainHoldings());
 </script>
 
 <div class="container">
-  <!-- <h1>{province.name}</h1>
-  <span>level: {province.level}</span>
-  <span>source: {province.sourceRating}</span>
-  <span>Domain: {province.owner.name}</span>
-  <span>Regent: {province.regent().name}</span> -->
+
 
   <table>
     <tr>
       <th rowspan="4" />
-      <th colspan="4">{province.owner.name}</th>
+      <th colspan="4">{province.owner ? province.owner.name : 'No Owner'}</th>
     </tr>
     <tr>
       <th colspan="4">{province.name}</th>

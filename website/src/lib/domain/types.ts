@@ -52,15 +52,15 @@ export type WorldData = {
 };
 
 export type BorderData = {
-  id: number;
-  a: number;
-  b: number;
+  id: UUID;
+  a: UUID;
+  b: UUID;
   d: PathData;
 };
 
 export type AreaData = {
   p: UUID;
-  borders: number[];
+  borders: UUID[];
 };
 
 export type SpecificArea = {
