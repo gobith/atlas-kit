@@ -34,6 +34,9 @@
     });
 
     clicked.subscribe((point) => {
+      if (point.x === 0 && point.y === 0) {
+				return;
+			}
       pointClicked(point);
     });
 
