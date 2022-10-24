@@ -11,7 +11,7 @@ import type {
 } from "./types";
 
 export class Node {
-  id: number;
+  id: string;
   pathToNodeMapping: Map<number, BorderDirection>;
 
   constructor(id: number) {
