@@ -6,14 +6,7 @@ import { Province, ProvinceArea } from '../domain/domain';
 import type { BorderData, AreaData } from '../domain/types';
 import Polygon from '../domain/polygon';
 
-import {
-	storeBorders,
-	borderPathForAreas,
-	provinceBordersPathForAreas,
-	borderDForArea,
-	polylabelForD,
-	borderDForAreas
-} from '../domain/nodes';
+import { storeBorders, borderDForArea, polylabelForD } from '../domain/nodes';
 
 export const createProvince = (point: { x: number; y: number }, session: Session): Province => {
 	const province = new Province({
@@ -26,7 +19,7 @@ export const createProvince = (point: { x: number; y: number }, session: Session
 		terrain: { name: 'Light Forest', potential: 7, color: '#D4FFA9', modifiers: [] }
 	});
 
-	console.log('Province', province);
+
 	session.uuidToObjectMapping.set(province.id, province);
 	session.provinces.push(province);
 
@@ -41,18 +34,18 @@ export const createProvince = (point: { x: number; y: number }, session: Session
 	provinceArea.path = new Path2D(d);
 	provinceArea.labelPoint = polylabelForD(d);
 	provinceArea.province = province;
-    province.descriptionArea = provinceArea;
-    province.provinceAreas.push(provinceArea);
-    session.provinceAreas.push(provinceArea);
-    session.areas.push(area);
+	province.descriptionArea = provinceArea;
+	province.provinceAreas.push(provinceArea);
+	session.provinceAreas.push(provinceArea);
+	session.areas.push(area);
 
-    session.updatePaths();
+	session.updatePaths();
 
 	return province;
 };
 
 const rectangleBorders = (point: { x: number; y: number }): BorderData[] => {
-	const delta = 100;
+	const delta = 500;
 
 	const border1: BorderData = {
 		id: uuidv4(),
@@ -82,17 +75,17 @@ const rectangleBorders = (point: { x: number; y: number }): BorderData[] => {
 		d: `M ${point.x + delta} ${point.y - delta} L ${point.x - delta} ${point.y - delta}`
 	};
 
-	border1.a = border2.id;
-	border1.b = border4.id;
+	border1.a = border1.id;
+	border1.b = border2.id;
 
-	border2.a = border3.id;
-	border2.b = border1.id;
+	border2.a = border2.id;
+	border2.b = border3.id;
 
-	border3.a = border4.id;
-	border3.b = border2.id;
+	border3.a = border3.id;
+	border3.b = border4.id;
 
-	border4.a = border1.id;
-	border4.b = border3.id;
+	border4.a = border4.id;
+	border4.b = border1.id;
 
 	return [border1, border2, border3, border4];
 };

@@ -17,7 +17,7 @@ const session = writable<Session | null>(null);
 
 export default session;
 
-const urls = ['/world.json', '/mapNew.json'];
+const urls = ['/world.json', '/mapNew2.json'];
 
 Promise.all(urls.map((url) => fetch(url)))
 	.then((resp) => Promise.all(resp.map((r) => r.json())))

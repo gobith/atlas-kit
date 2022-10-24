@@ -197,14 +197,18 @@
 				selectedArea = $selection === area.province ? null : area;
 			}
 		});
-		ctx.restore();
+	
 
 		if (selectedArea) {
+			ctx.restore();
 			selection.set(selectedArea.province);
 		} else {
-			console.log('nothing selected', point);
+		
 
-			selection.set(createProvince(point, session));
+			const province = createProvince({x: point.x / $scale , y: point.y / $scale} , session);
+			ctx.restore()
+
+			selection.set(province);
 		}
 	};
 </script>

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Province } from '$lib/domain/domain';
   export let province: Province;
-  console.log(province.domainHoldings());
 </script>
 
 <div class="container">
