@@ -4,7 +4,7 @@
 	import Navigation from '$lib/navigation/Navigation.svelte';
 	import DrawMap from '$lib/map/DrawMap.svelte';
 
-	const draw = true;
+	const draw = false;
 </script>
 
 {#if $session}
